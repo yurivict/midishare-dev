@@ -1,0 +1,28 @@
+#!/bin/sh
+#
+
+A=../../applications
+D=../../Drivers
+L=../../../../lang
+LIB=../../../../libraries
+DIST=../root
+DEV=../devroot
+BUILD=build/Deployment
+
+# lists format: [ src dest ]+
+FRMWKS="../../$BUILD/MidiShare.framework	$DIST/System/Library/Frameworks \
+	 ../../../../libraries/player/macosx/$BUILD/Player.framework $DIST/System/Library/Frameworks"
+
+APPLS="$A/msControler/$BUILD/msControler.app 			$DIST/Applications/MidiShare \
+	 $A/msDisplay/$BUILD/msDisplay.app 			$DIST/Applications/MidiShare\
+	 $A/msDrivers/$BUILD/msDrivers.app 			$DIST/Applications/MidiShare"
+
+DRIVERS="$D/msMidiDriver/$BUILD/msMidiDriver.*.so 		$DIST/usr/lib \
+	$D/msQTDriver/$BUILD/msQTDriver.*.so 			$DIST/usr/lib \
+	$D/msNet/$BUILD/msLANDriver.*.so 			$DIST/usr/lib \
+	$D/msNet/$BUILD/msWANDriver.*.so			$DIST/usr/lib"
+
+JAVA="$LIB/player/macosx/java/$BUILD/libJPlayer.*.jnilib $DIST/usr/lib/java \
+	$L/java/jni/macosx/$BUILD/libJMidi.*.jnilib	$DIST/usr/lib/java
+	$L/java/native/macosx/$BUILD/grame.jar		$DIST/Library/Java/Extensions"
+

@@ -1,0 +1,14 @@
+
+TARGET := msApplsLib.o
+CFLAGS := $(CFLAGS) -I../../Include `pkg-config --cflags gtk+-2.0`
+OBJ  := msApplsTools.o
+#CC   = gcc
+
+all : $(TARGET)
+  
+$(TARGET) : $(OBJ)
+	ld -m elf_i386 -r -o $(TARGET) $(OBJ)
+
+clean :
+	rm -f $(TARGET) $(OBJ)
+	

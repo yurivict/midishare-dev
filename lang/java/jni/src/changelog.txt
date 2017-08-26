@@ -1,0 +1,53 @@
+=====================================================
+  MidiShare JNI library
+  Changes log
+=====================================================
+
+
+-----------------------------------------------------
+version 1.1.7
+- 64 buts arch: bug in Midi.GetData[0-3] corrected
+
+-----------------------------------------------------
+version 1.1.6
+- transparent support for 32 bits and 64 bits architectures
+
+-----------------------------------------------------
+version 1.1.5
+- 64 bits version. Requires mshare64.dll.
+  For java clients, the main change is the type of all pointer 
+  related variables that are now 'long' instead of 'int'.
+  Normally, the java compiler should refuse to compile old code unless
+  it has been adapted to the new types. However, you should carefully 
+  check for potential problems due to explicit casts. 
+
+-----------------------------------------------------
+version 1.1.4
+- crash bug corrected, introduced with version 1.1.3 and the use
+  of direct call to MidiAppl::ApplAlarm that was setting an incorrect 
+  jni env at the first alarm call. This env was shared by the
+  receive alarm that crashed at first event reception.
+  Solved by using a specific env for ApplAlarm, computed at each
+  alarm call.
+
+-----------------------------------------------------
+version 1.1.3
+- crash bug corrected due to asynchrone reentrance between 
+  MidiShare events handlers and java call to native code:
+  the typical symptom was a receive alarm ca&ll interrupted by 
+  a native ApplClose call (from MidiAppl). The rcv alarm was triggered
+  by private events used by java to handle application alarms.
+  Solved by a direct call to MidiAppl::ApplAlarm, removing the use
+  of private events. However, the problem is still present and could
+  occur for example if the application is receiving events at the time
+  of the close call. Client applications should remove all connections
+  and flush the buffers before closing.
+
+-----------------------------------------------------
+version 1.1.2
+- crash bug corrected with MidiGetName called with incorrect refnum
+
+
+-----------------------------------------------------
+version 1.1.1
+

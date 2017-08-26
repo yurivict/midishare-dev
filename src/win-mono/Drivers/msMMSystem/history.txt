@@ -1,0 +1,24 @@
+---------------------------------------------------------------------------
+MidiShare Windows MultiMedia Driver
+Built on top of Windows MMSystem
+---------------------------------------------------------------------------
+Versions history:
+---------------------------------------------------------------------------
+
+v 1.0.9.2	: driver revised to support Windows 10
+v 1.0.9.0	: corrects bad data on 64 bits architectures (control change affected)
+v 1.0.8.0	: corrects bad data on 64 bits architectures (note events affected)
+v 1.0.7.0	: 64 bits architectures support
+v 1.0.5.0	: supports error message log using ini file (section [log], file="yes"|"no")
+v 1.0.4.0	: supports error message box using ini file (section [error], messagebox="yes"|"no")
+v 1.0.3.5	: don't allow connections to a slot that can't be opened
+v 1.0.3.4	: a slot connected to multiple ports is opened only once, therefore
+                  there is no more abusive error report in log file 
+v 1.0.3.3	: no change - published version
+v 1.0.3.0	: bug in RcvAlarm corrected. symptom: MidiShare memory loss. 
+v 1.0.2.0	: read init file first in application directory then
+			  if not found in windows directory
+			  log file and init file are created in application directory
+v 1.0.1.0	: MMSystem ports are now correctly released at exit time
+v 1.0.0.0	: first driver release
+
